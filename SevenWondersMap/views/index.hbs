@@ -1,0 +1,63 @@
+<div class="head">
+  <h1>{{title}}</h1>
+  <p>Welcome to {{title}}</p>
+</div>
+<div class="content-wrapper">
+  <div>
+    <div id='map' style='width: 85vw; height: 60vh; margin:50px auto;'></div>
+   
+  </div>
+  <div class="locate">
+    <form action="/" method="post">
+      <label for="name">Name: </label>
+      <input type="text" name="name" id="name">
+
+      <label for="image">Image: </label>
+      <input type="url" name="image" id="image">
+
+      <label for="location">Location: </label>
+      <label for="location" class="loc-label">Longitude: </label>
+      <input type="number" name="longitude" id="longitude" step='0.000001'>
+      <label for="location" class="loc-label">Latitude: </label>
+      <input type="number" name="latitude" id="latitude" step='0.000001'>
+
+      <button type="submit">Create Seven Wonder!</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1IjoiYW5nbWluc2hlbmciLCJhIjoiY2pydDhjMjlwMXhpaDN5cHMxcjNya2ZmbyJ9.Tc5kmo0vZ1VKJbLK83OloA';
+  var map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/streets-v9'
+  });
+
+  axios.get('http://localhost:3010/api/places').then((response) => {
+    let places = response.data
+
+    places.forEach(place => {
+      let marker = new mapboxgl.Marker()
+        .setLngLat(place.location.coordinates)
+        .addTo(map)
+    })
+  })
+
+  axios.get('http://localhost:3010/api/places').then((response) => {
+    let places = response.data
+    
+    places.forEach(place => {
+      let popup = new mapboxgl.Popup({ offset: 0, className: 'my-class' })
+        .setHTML(`<div class="popup"><p>${place.name}</p><img src="${place.imageUrl}" alt=""></div>`)
+        .setMaxWidth("none")
+
+      let marker = new mapboxgl.Marker()
+        .setLngLat(place.location.coordinates)
+        .setPopup(popup)
+        .addTo(map)
+    })
+  })
+
+</script>
+
+

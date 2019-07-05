@@ -1,0 +1,81 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 20vh;
+  margin: 0;
+  background-color: rgb(101, 207, 238);
+  color: white;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: space-evenly;
+  margin-left: 20px;
+}
+
+.map {
+  padding-left: 20px;
+}
+
+.locate {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+}
+
+label {
+  color: rgb(101, 207, 238);
+  font-size: 16px;
+}
+
+input {
+  border-radius: 3px;
+  border-color: rgb(101, 238, 119);
+  margin: 5px 0 10px 0;
+}
+
+.loc-label {
+  font-size: 12px;
+  padding: 10px;
+}
+
+button {
+  border-radius: 5px;
+  margin: 10px;
+  background-color: rgba(101, 206, 238, 0.678);
+  text-align: center;
+}
+
+.my-class {
+  width: 300px;
+  height: 300px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  overflow: hidden;
+}
+
+.my-class p {
+  color: rgb(101, 207, 238);
+}
+
